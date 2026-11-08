@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Vector flower landscape</title>
+  <desc id="desc">A simple vector illustration of a yellow sun, green hills, blue stream, and a pink flower.</desc>
+  <rect width="800" height="500" fill="#a8ddff"/>
+  <circle cx="650" cy="95" r="58" fill="#ffd447"/>
+  <path d="M0 285 Q180 170 360 275 T800 235 V500 H0Z" fill="#79bd61"/>
+  <path d="M0 350 Q190 260 390 350 T800 315 V500 H0Z" fill="#3f984f"/>
+  <path d="M0 420 Q180 360 360 410 T800 390 V500 H0Z" fill="#247b43"/>
+  <path d="M0 445 Q190 400 360 445 T800 425" fill="none" stroke="#4bb8e8" stroke-width="42" stroke-linecap="round"/>
+  <path d="M0 445 Q190 400 360 445 T800 425" fill="none" stroke="#b9efff" stroke-width="5" stroke-linecap="round"/>
+  <g transform="translate(265 330)">
+    <path d="M0 20 Q-8 85 0 135" stroke="#236b38" stroke-width="10" fill="none"/>
+    <path d="M0 95 Q-55 55 -70 95 Q-35 125 0 105" fill="#55a94d"/>
+    <path d="M0 110 Q55 65 75 100 Q45 135 0 120" fill="#55a94d"/>
+    <g fill="#f47ca8" stroke="#b94d78" stroke-width="2">
+      <ellipse cx="0" cy="-28" rx="18" ry="36"/>
+      <ellipse cx="0" cy="-28" rx="18" ry="36" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-28" rx="18" ry="36" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-28" rx="18" ry="36" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-28" rx="18" ry="36" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-28" rx="18" ry="36" transform="rotate(300)"/>
+    </g>
+    <circle r="18" fill="#ffd447" stroke="#d79b20" stroke-width="3"/>
+  </g>
+</svg>
