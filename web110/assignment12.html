@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WEB 110 Assignment 12 JavaScript">
+    <title>Assignment 12 - JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="myName"></h1>
+    </header>
+
+    <main>
+        <h2>JavaScript Date and Time</h2>
+        <p id="currentDate"></p>
+
+        <h2>What I Learned</h2>
+        <p>
+            While completing this assignment, I learned how JavaScript
+            can be used with HTML to make webpages more interactive.
+            I learned how to display text using document.getElementById()
+            and innerHTML, and how to use the Date() function to show
+            the current date and time. I also learned how to use the
+            HTML canvas element with JavaScript to draw text and shapes.
+            I can apply these skills to my own websites by displaying
+            information, adding interactive features, and creating
+            simple graphics.
+        </p>
+
+        <h2>Extra Credit: Canvas Text</h2>
+        <canvas id="nameCanvas" width="360" height="100">
+            Your browser does not support canvas.
+        </canvas>
+
+        <h2>Extra Credit: Canvas Shapes</h2>
+        <canvas id="shapeCanvas" width="360" height="180">
+            Your browser does not support canvas.
+        </canvas>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Rachel Nass | WEB 110</p>
+    </footer>
+
+    <script>
+        // Display my name in the heading
+        document.getElementById("myName").innerHTML = "Rachel Nass";
+
+        // Display the current date and time
+        document.getElementById("currentDate").innerHTML = Date();
+
+        // Write my name on the first canvas
+        var nameCanvas = document.getElementById("nameCanvas");
+        var nameContext = nameCanvas.getContext("2d");
+
+        nameContext.font = "30px Arial";
+        nameContext.fillStyle = "blue";
+        nameContext.fillText("Rachel Nass", 20, 55);
+
+        // Draw shapes on the second canvas
+        var shapeCanvas = document.getElementById("shapeCanvas");
+        var shapeContext = shapeCanvas.getContext("2d");
+
+        // Draw a line
+        shapeContext.beginPath();
+        shapeContext.lineWidth = 4;
+        shapeContext.moveTo(20, 30);
+        shapeContext.lineTo(320, 30);
+        shapeContext.stroke();
+
+        // Draw a circle
+        shapeContext.beginPath();
+        shapeContext.fillStyle = "red";
+        shapeContext.arc(75, 105, 30, 0, 2 * Math.PI);
+        shapeContext.fill();
+
+        // Draw a square
+        shapeContext.fillStyle = "green";
+        shapeContext.fillRect(150, 75, 60, 60);
+    </script>
+
+</body>
+</html>
