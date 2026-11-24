@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 13 covering database concepts and SQL statements.">
+    <title>Assignment 13 - Databases</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Assignment 13 - Databases</h1>
+</header>
+<main>
+    <h2>Single-Table SELECT Statements</h2>
+
+    <p>
+        The SELECT statement retrieves information from a database table.
+        These examples use the Customers table to retrieve all columns,
+        selected fields, filtered records, sorted results, and grouped counts.
+    </p>
+
+    <ul>
+        <li>Select all customers:
+            <code>SELECT * FROM CUSTOMERS;</code>
+        </li>
+
+        <li>Select only the customer ID and customer name:
+            <code>SELECT CustomerID, CustomerName FROM CUSTOMERS;</code>
+        </li>
+
+        <li>Select customer name, address, city, and postal code for customers in the United Kingdom:
+            <code>SELECT CustomerName, Address, City, PostalCode FROM CUSTOMERS WHERE Country = 'UK';</code>
+        </li>
+
+        <li>Select contact name and customer name, sorted alphabetically by contact name:
+            <code>SELECT ContactName, CustomerName FROM CUSTOMERS ORDER BY ContactName;</code>
+        </li>
+
+        <li>Count the total number of customers:
+            <code>SELECT COUNT(*) FROM CUSTOMERS;</code>
+        </li>
+
+        <li>Count the number of customers from each country:
+            <code>SELECT Country, COUNT(*) FROM CUSTOMERS GROUP BY Country;</code>
+        </li>
+
+        <li>Count customers by country, sorting by the count from highest to lowest and then by country alphabetically:
+            <code>SELECT Country, COUNT(*) AS TotalCustomers FROM CUSTOMERS GROUP BY Country ORDER BY TotalCustomers DESC, Country ASC;</code>
+        </li>
+
+        <li>Show countries with more than 10 customers, sorted by count and country:
+            <code>SELECT Country, COUNT(*) AS TotalCustomers FROM CUSTOMERS GROUP BY Country HAVING COUNT(*) > 10 ORDER BY TotalCustomers DESC, Country ASC;</code>
+        </li>
+    </ul>
+
+    <h2>Multiple-Table SELECT Statements</h2>
+
+    <p>
+        Multiple-table SELECT statements use INNER JOIN to combine
+        information from two or more related database tables.
+        These examples connect customers, orders, order details,
+        and products to retrieve related information.
+    </p>
+
+    <ul>
+        <li>Display customer names, order IDs, and order dates:
+            <code>SELECT Customers.CustomerName, Orders.OrderID, Orders.OrderDate FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;</code>
+        </li>
+
+        <li>Display customer names, order numbers, and order dates:
+            <code>SELECT Customers.CustomerName, Orders.OrderID AS [Order Number], Orders.OrderDate FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID;</code>
+        </li>
+
+        <li>Sort customer names and order numbers:
+            <code>SELECT Customers.CustomerName, Orders.OrderID AS [Order Number], Orders.OrderDate FROM Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID ORDER BY Customers.CustomerName, Orders.OrderID;</code>
+        </li>
+
+        <li>Display order IDs, order dates, product names, and quantities:
+            <code>SELECT Orders.OrderID, Orders.OrderDate, Products.ProductName, OrderDetails.Quantity FROM ((Orders INNER JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID) INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID);</code>
+        </li>
+
+        <li>Calculate the extended price for each product ordered:
+            <code>SELECT Orders.OrderID, Orders.OrderDate, Products.ProductName, OrderDetails.Quantity, OrderDetails.Quantity * Products.Price AS ExtendedPrice FROM ((Orders INNER JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID) INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID);</code>
+        </li>
+
+        <li>Display order and extended price information for customer ID 2:
+            <code>SELECT Orders.OrderID, Orders.OrderDate, Products.ProductName, OrderDetails.Quantity, OrderDetails.Quantity * Products.Price AS ExtendedPrice FROM ((Orders INNER JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID) INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID) WHERE Orders.CustomerID = 2;</code>
+        </li>
+
+        <li>Display order and extended price information for Around the Horn:
+            <code>SELECT Orders.OrderID, Orders.OrderDate, Products.ProductName, OrderDetails.Quantity, OrderDetails.Quantity * Products.Price AS ExtendedPrice FROM (((Customers INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID) INNER JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID) INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID) WHERE Customers.CustomerName = 'Around the Horn';</code>
+        </li>
+    </ul>
+
+    <h2>INSERT, UPDATE, and DELETE Statements</h2>
+
+    <p>
+        INSERT adds a new record, UPDATE changes information in existing
+        records, and DELETE removes records. The following statements
+        complete the database modification activities.
+    </p>
+
+    <ul>
+        <li>Add a shipper with ID 4, name On Time Delivery, and phone number (503) 555 0123:
+            <code>INSERT INTO Shippers (ShipperID, ShipperName, Phone) VALUES (4, 'On Time Delivery', '(503) 555 0123);</code>
+        </li>
+
+        <li>Increase the price of every product by 1:
+            <code>UPDATE Products SET Price = Price + 1;</code>
+        </li>
+
+        <li>Reduce the price of every product by 1:
+            <code>UPDATE Products SET Price = Price - 1;</code>
+        </li>
+
+        <li>Change the new shipper's name to On-Time Delivery:
+            <code>UPDATE Shippers SET ShipperName = 'On-Time Delivery' WHERE ShipperID = 4;</code>
+        </li>
+
+        <li>Delete the new shipper:
+            <code>DELETE FROM Shippers WHERE ShipperID = 4;</code>
+        </li>
+    </ul>
+
+    <h2>What I Learned</h2>
+    <p>
+        While completing these database activities, I learned how databases
+        organize information into tables and how SQL statements retrieve and
+        modify stored data. I practiced using SELECT statements to display
+        information, WHERE clauses to filter records, ORDER BY to sort results,
+        and GROUP BY with COUNT to summarize information. I also learned how INNER 
+        JOIN connects related tables and how INSERT, UPDATE, and DELETE statements 
+        add, change, and remove records. I can apply these skills to future web development 
+        projects by understanding how websites store customer information, organize products, 
+        and manage information efficiently. Understanding these database concepts will help me 
+        build websites that store, retrieve, and manage organized, accurate data.
+    </p>
+
+</main>
+<footer>
+    <p><a href="index.html">Back to WEB 110 Assignments</a></p>
+</footer>
+</body>
+</html>
